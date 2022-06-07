@@ -1,0 +1,37 @@
+<div class="text-center">
+    <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="login()">
+        <span>
+        Login
+    </span>
+
+        <div>
+            <label>Email</label>
+            <input class="input100" type="email" formControlName="email" placeholder="Ingrese su email">
+            <span class="focus-input100"></span>
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input class="input100" type="password" formControlName="password" placeholder="Ingrese su contraseña">
+        </div>
+
+        <div>
+            <div>
+                <div></div>
+                <button type="submit" [disabled]="miFormulario.invalid">
+                Login
+            </button>
+            </div>
+        </div>
+
+        <div>
+            <span>
+            ¿No tienes cuenta?
+        </span>
+
+            <a routerLink="/auth/registro" class="txt2">
+            Crear una aquí
+        </a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,46 @@
+<mat-sidenav-container fullscreen>
+    <!-- utilizamos el efecto Push para hacer la animación -->
+    <mat-sidenav #sidenav mode="push">
+        <!-- hacemos la configuracion del boton del sidebar en este caso solo agregamos un color -->
+        <mat-toolbar class="background-primary">
+            <span>Menú</span>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <!-- listado algunos botones como ejemplo -->
+        <mat-nav-list>
+            <a routerLink="/material/listado" mat-list-item (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>label</mat-icon>
+                <span>Listado Principal</span>
+            </a>
+
+            <a routerLink="./agregar" mat-list-item (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>add</mat-icon>
+                <span>Añadir Registro</span>
+            </a>
+            <a routerLink="./buscar" mat-list-item (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>search</mat-icon>
+                <span>Búscar Ubicación</span>
+            </a>
+        </mat-nav-list>
+
+    </mat-sidenav>
+    <!-- redirecion al componente menu lugar del index de mi aplicación -->
+    <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <!-- <button [routerLink]="['/']" mat-button class="background-primary">
+            Logout
+        </button> -->
+    </mat-toolbar>
+    <!-- contenedor lugar donde haremos el llamado de direntes componentes -->
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-sidenav-container>

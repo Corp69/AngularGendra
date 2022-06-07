@@ -1,0 +1,157 @@
+<div class="container">
+    <h1 style=" text-align:center">Ubicaciones</h1>
+    <br><br>
+    <form [formGroup]="frmBuscar">
+        <div class="container mt-5">
+            <div class="text-center">
+                <p style=" text-align:center">Ingrese texto para poder activar la busqueda.</p>
+                <div class="row">
+                    <div class="input-group mb-6">
+                        <input type="checkbox" (click)="click($event)" formControlName="_des">
+                        <label class="form-check-label" for="inlineRadio1">
+                            1. buscar por Columnas: (Nombre, Ascii)
+                        </label>
+                    </div>
+                    <div class="input-group mb-6">
+                        <input type="checkbox" (click)="clickLong($event)" formControlName="_long_">
+                        <label class="form-check-label" for="inlineRadio1">
+                            2. buscar por Columnas: (Latitud, Longitud, Elevación)
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-6">
+                        <input type="checkbox" (click)="clickCode($event)" formControlName="_featcode_">
+                        <label class="form-check-label" for="inlineRadio1">
+                            3. buscar por Columnas: (Clase, Codigo, CC2)
+                        </label>
+                    </div>
+                    <div class="input-group mb-6">
+                        <input type="checkbox" (click)="clickAdmin($event)" formControlName="_admin_">
+                        <label class="form-check-label" for="inlineRadio1">
+                            4. buscar por Columnas: (Admin No.1, Admin No.2, Admin No.3, Admin No.4)
+                        </label>
+                    </div>
+                    <div class="input-group mb-6">
+                        <input type="checkbox" (click)="clickContry($event)" formControlName="_contry_">
+                        <label class="form-check-label" for="inlineRadio1">
+                            5. buscar por Columnas: (TZ, Fecha Modificación)
+                        </label>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-11">
+                        <input (change)='ngOnChanges($event)' formControlName="_filtro" class="form-control" type="text"
+                            placeholder="Escriba Aqui ">
+                    </div>
+                        <button type="submit" class="btn btn-outline-info" title="Buscar" (click)="ngOnChanges($event)"
+                        [disabled]="frmBuscar.invalid">Buscar</button>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+    </form>
+    <!-- tabla de las Ubicaciones -->
+    <div style="overflow-x: scroll;">
+        <table class="table table-striped table-bordered table-hover table-sm">
+            <thead style="background-color: rgb(249, 231, 159  );">
+                <tr>
+                    <th>#</th>
+                    <th style="min-width: 160px;">Nombre</th>
+                    <th style="min-width: 100px;">Ascii</th>
+                    <th style="min-width: 200px;">Nombre Alterno</th>
+                    <th style="min-width: 100px;">Latitud</th>
+                    <th style="min-width: 100px;">Longitud</th>
+                    <th style="min-width: 100px;">Clase</th>
+                    <th style="min-width: 100px;">Codigo</th>
+                    <th style="min-width: 100px;">Contry/Pais/Departamento</th>
+                    <th style="min-width: 100px;">CC2</th>
+                    <th style="min-width: 50px;">Admin No.1</th>
+                    <th style="min-width: 50px;">Admin No.2</th>
+                    <th style="min-width: 50px;">Admin No.3</th>
+                    <th style="min-width: 50px;">Admin No.4</th>
+                    <th style="min-width: 50px;">Popular</th>
+                    <th style="min-width: 50px;">Elevación</th>
+                    <th style="min-width: 50px;">Dem</th>
+                    <th style="min-width: 50px;">TZ</th>
+                    <th style="min-width: 50px;">Fecha Modificación/Codigo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of data" style="margin-left: 15px;" style="background-color: rgb(249, 253, 254);">
+                    <td>
+                        {{item.id}}
+                    </td>
+                    <td>
+                        {{item.name}}
+                    </td>
+                    <td>
+                        {{item.ascii}}
+                    </td>
+                    <td>
+                        {{item.alt_name}}
+                    </td>
+                    <td>
+                        {{item.lat}}
+                    </td>
+                    <td>
+                        {{item.long}}
+                    </td>
+                    <td>
+                        {{item.feat_class}}
+                    </td>
+                    <td>
+                        {{item.feat_code}}
+                    </td>
+                    <td>
+                        {{item.country}}
+                    </td>
+                    <td>
+                        {{item.cc2}}
+                    </td>
+                    <td>
+                        {{item.admin1}}
+                    </td>
+                    <td>
+                        {{item.admin2}}
+                    </td>
+                    <td>
+                        {{item.admin3}}
+                    </td>
+                    <td>
+                        {{item.admin4}}
+                    </td>
+                    <td>
+                        {{item.population}}
+                    </td>
+                    <td>
+                        {{item.elevation}}
+                    </td>
+                    <td>
+                        {{item.dem}}
+                    </td>
+                    <td>
+                        {{item.tz}}
+                    </td>
+                    <td>
+                        {{item.modified_at}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <hr>
+    <div class="container-fluid">
+        <div class="row pt-4">
+            <div class="col-md-12 text-center mb-2" style="text-align: center;">
+                <small> ©2022 CopyRight
+                    <span class="text-secondary font-weight-bold">Elizandro Dev. </span>
+                </small>
+            </div>
+        </div>
+    </div>
+
+</div>
